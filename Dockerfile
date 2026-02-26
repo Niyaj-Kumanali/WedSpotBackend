@@ -1,6 +1,13 @@
 # -------- Build Stage --------
-FROM maven:3.9.12-eclipse-temurin-25-alpine AS build
+FROM eclipse-temurin:25-jdk-alpine AS build
 WORKDIR /app
+
+# Install dependencies needed for mvnw
+RUN apk add --no-cache bash
+
+# Copy wrapper files
+COPY mvnw .
+COPY .mvn .mvn/
 
 # Copy root pom and module poms to cache dependencies
 COPY pom.xml .
@@ -9,11 +16,11 @@ COPY api-gateway/pom.xml api-gateway/
 COPY service-registry/pom.xml service-registry/
 
 # Download dependencies (this layer will be cached)
-RUN mvn dependency:go-offline -B
+RUN chmod +x mvnw && ./mvnw dependency:go-offline -B
 
 # Copy source code and build
 COPY . .
-RUN mvn package -DskipTests
+RUN ./mvnw package -DskipTests
 
 # -------- Run Stage --------
 FROM eclipse-temurin:25-jdk-alpine
