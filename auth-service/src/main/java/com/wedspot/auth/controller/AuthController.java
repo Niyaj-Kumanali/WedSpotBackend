@@ -1,7 +1,10 @@
 package com.wedspot.auth.controller;
 
+import com.wedspot.auth.Model.APIResponse;
 import com.wedspot.auth.Model.LoginRequest;
 import com.wedspot.auth.Model.RegisterRequest;
+import com.wedspot.auth.services.IAuthService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,26 +13,20 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
+    private final IAuthService authService;
+
     @PostMapping("/login")
-    public ResponseEntity<Map<String, Object>> login(@RequestBody LoginRequest request) {
-        // Demo logic
-        System.out.println("Login request: " + request.getEmail() + " / " + request.getPassword());
-        Map<String, Object> response = new HashMap<>();
-        response.put("status", "success");
-        response.put("message", "Login successful");
-        response.put("token", "demo-jwt-token-12345");
+    public ResponseEntity<APIResponse> login(@RequestBody LoginRequest request) {
+        APIResponse response = authService.login(request);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, Object>> register(@RequestBody RegisterRequest request) {
-        // Demo logic
-        Map<String, Object> response = new HashMap<>();
-        response.put("status", "success");
-        response.put("message", "User registered successfully");
-        response.put("userEmail", request.getEmail());
+    public ResponseEntity<APIResponse> register(@RequestBody RegisterRequest request) {
+        APIResponse response = authService.register(request);
         return ResponseEntity.ok(response);
     }
 }

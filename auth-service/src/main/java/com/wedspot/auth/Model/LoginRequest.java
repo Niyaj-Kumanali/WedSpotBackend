@@ -1,4 +1,12 @@
-package com.wedspot.auth.Model.Entity;
+package com.wedspot.auth.Model;
 
-public class Login {
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+public class LoginRequest {
+    private String email;
+    private String password;
 }
