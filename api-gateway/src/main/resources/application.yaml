@@ -26,6 +26,4 @@ eureka:
 
 logging:
   level:
-    org.springframework.cloud.gateway: TRACE
-
-invalid-property-test: true
+    "[org.springframework.cloud.gateway]": TRACE
