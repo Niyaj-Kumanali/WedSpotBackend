@@ -1,7 +1,6 @@
 package com.wedspot.auth.Model;
 
 import lombok.Data;
-import org.springframework.cglib.core.Local;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
