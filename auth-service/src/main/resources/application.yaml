@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: auth-service
+  main:
+    lazy-initialization: true
   # Database configuration
   datasource:
     url: ${DB_URL:jdbc:postgresql://db.dscvrpluimupwogilmqv.supabase.co:5432/postgres}

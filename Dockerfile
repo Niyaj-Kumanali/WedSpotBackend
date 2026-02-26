@@ -2,8 +2,18 @@
 FROM maven:3.9.12-eclipse-temurin-25-alpine AS build
 WORKDIR /app
 
+# Copy root pom and module poms to cache dependencies
+COPY pom.xml .
+COPY auth-service/pom.xml auth-service/
+COPY api-gateway/pom.xml api-gateway/
+COPY service-registry/pom.xml service-registry/
+
+# Download dependencies (this layer will be cached)
+RUN mvn dependency:go-offline -B
+
+# Copy source code and build
 COPY . .
-RUN mvn clean package -DskipTests
+RUN mvn package -DskipTests
 
 # -------- Run Stage --------
 FROM eclipse-temurin:25-jdk-alpine
