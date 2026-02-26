@@ -20,7 +20,7 @@ RUN chmod +x mvnw && ./mvnw dependency:go-offline -B
 
 # Copy source code and build
 COPY . .
-RUN ./mvnw package -DskipTests
+RUN chmod +x mvnw && ./mvnw package -DskipTests
 
 # -------- Run Stage --------
 FROM eclipse-temurin:25-jdk-alpine
