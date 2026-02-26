@@ -10,14 +10,14 @@ import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
 
 @SpringBootApplication
 public class ApiGatewayApplication {
-	@Autowired
-	RouteDefinitionLocator locator;
-
-	@PostConstruct
-	public void printRoutes() {
-		locator.getRouteDefinitions().subscribe(route ->
-				System.out.println("Loaded Route: " + route.getId()));
-	}
+//	@Autowired
+//	RouteDefinitionLocator locator;
+//
+//	@PostConstruct
+//	public void printRoutes() {
+//		locator.getRouteDefinitions().subscribe(route ->
+//				System.out.println("Loaded Route: " + route.getId()));
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiGatewayApplication.class, args);
