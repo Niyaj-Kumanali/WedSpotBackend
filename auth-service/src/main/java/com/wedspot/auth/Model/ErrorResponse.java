@@ -1,4 +1,4 @@
 package com.wedspot.auth.Model;
 
-public class RegiserRequest {
+public class ErrorResponse {
 }
