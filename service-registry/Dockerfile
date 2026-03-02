@@ -13,4 +13,6 @@ WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# JVM Optimizations for Render Free Tier (512MB RAM)
+# -XX:TieredStopAtLevel=1 improves startup time
+ENTRYPOINT ["java", "-Xmx256m", "-XX:TieredStopAtLevel=1", "-jar", "app.jar"]

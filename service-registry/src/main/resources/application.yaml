@@ -1,6 +1,5 @@
 server:
-  port: 8761
-  address: 127.0.0.1
+  port: ${REGISTRY_PORT:8761}
 
 spring:
   main:
