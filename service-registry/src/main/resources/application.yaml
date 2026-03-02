@@ -10,6 +10,8 @@ spring:
 
 # Do not register itself
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     register-with-eureka: false
     fetch: false
