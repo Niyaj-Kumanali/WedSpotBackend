@@ -4,6 +4,7 @@ import com.wedspot.auth.Model.APIResponse;
 import com.wedspot.auth.Model.LoginRequest;
 import com.wedspot.auth.Model.RegisterRequest;
 import com.wedspot.auth.services.IAuthService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +17,13 @@ public class AuthController {
     private final IAuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<APIResponse> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<APIResponse> login(@RequestBody @Valid LoginRequest request) {
         APIResponse response = authService.login(request);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<APIResponse> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<APIResponse> register(@RequestBody @Valid RegisterRequest request) {
         APIResponse response = authService.register(request);
         return ResponseEntity.ok(response);
     }
