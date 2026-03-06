@@ -20,6 +20,9 @@ spring:
       data-source-properties:
         prepareThreshold: 0
 
+  jackson:
+    default-property-inclusion: non_null
+
   jpa:
     hibernate:
       ddl-auto: update

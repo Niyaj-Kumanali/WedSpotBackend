@@ -9,4 +9,6 @@ public interface IAuthService {
 
     APIResponse register(RegisterRequest request);
 
+    APIResponse getAllUsers();
+
 }

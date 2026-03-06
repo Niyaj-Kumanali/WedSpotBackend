@@ -3,6 +3,7 @@ package com.wedspot.auth.Model;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import jakarta.ws.rs.DefaultValue;
 import lombok.Data;
 
 @Data
@@ -20,4 +21,7 @@ public class RegisterRequest {
 
     @Pattern(regexp = "^[0-9]{10}$", message = "Phone number must be 10 digits")
     private String phoneNumber;
+
+    @DefaultValue(value = "CLIENT")
+    private String role;
 }

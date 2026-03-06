@@ -15,14 +15,12 @@ public class User {
 
     private String name;
 
-    @Column(unique = true)
     private String email;
 
     private String password;
 
-    private String role = "CLIENT";
+    private String role;
 
-    @Column(unique = true)
     private String phoneNumber;
 
     private boolean enabled = true;
@@ -42,5 +40,4 @@ public class User {
         updatedAt = LocalDateTime.now();
     }
 
-        
 }
